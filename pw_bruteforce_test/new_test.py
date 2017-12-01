@@ -2,7 +2,7 @@ import numba.cuda
 import sys
 import random
 
-PENIS = "abcdefghijklmnopqrstuvwxyz0123456789"
+ELEMENTS = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 def get_pw(le):
 
@@ -10,8 +10,8 @@ def get_pw(le):
     mypw = ""
 
     for i in range(pw_length):
-        next_index = random.randrange(len(PENIS))
-        mypw += PENIS[next_index]
+        next_index = random.randrange(len(ELEMENTS))
+        mypw += ELEMENTS[next_index]
 
     print(mypw)
     return mypw
@@ -24,9 +24,9 @@ PASSWORD_LENGTH = len(PASSWORD)
 def bruteforce(pw):
     complete_list = []
     for current in range(PASSWORD_LENGTH):
-        a = [i for i in PENIS]
+        a = [i for i in ELEMENTS]
         for y in range(current):
-            a = [x+i for i in PENIS for x in a]
+            a = [x+i for i in ELEMENTS for x in a]
             if pw in a:
                 index = a.index(pw)
                 print("Password found! %s" % a[index])
